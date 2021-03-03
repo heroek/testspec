@@ -12,3 +12,48 @@ Build:
   tasks:
     - script:
       - echo 'Hello World!'
+      
+---
+version: 2
+plan:
+  project-key: MARS
+  key: DBEAT1
+  name: Deploybeat-p1
+stages:
+- Default Stage:
+    manual: false
+    final: false
+    jobs:
+    - Download and create Artifact
+Download and create Artifact:
+  key: JOB1
+  tasks:
+  - checkout:
+      path: code
+      force-clean-build: 'false'
+# com.atlassian.bamboo.plugins.scripttask:task.builder.command is disabled. This state is not supported at YAML
+  artifacts:
+  - name: ansible-code
+    location: code
+    pattern: '**'
+    shared: true
+    required: true
+triggers:
+- polling:
+    period: '180'
+branches:
+  create: manually
+  delete: never
+  link-to-jira: true
+notifications: []
+labels: []
+other:
+  concurrent-build-plugin: system-default
+---
+version: 2
+plan:
+  key: DBEAT-DBEAT1
+plan-permissions:
+- users:
+  - marco
+  permissions:
