@@ -2,21 +2,6 @@
 version: 2
 plan:
   project-key: MARS
-  key: ROCKET
-  name: Build the rocket
-stages:
-  - Build hull:
-    - Build
-
-Build:
-  tasks:
-    - script:
-      - echo 'Hello World!'
-      
----
-version: 2
-plan:
-  project-key: MARS
   key: DBEAT1
   name: Deploybeat-p1
 stages:
@@ -52,7 +37,7 @@ other:
 ---
 version: 2
 plan:
-  key: DBEAT-DBEAT1
+  key: MARS-DBEAT1
 plan-permissions:
 - users:
   - marco
