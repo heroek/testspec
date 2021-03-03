@@ -34,11 +34,3 @@ notifications: []
 labels: []
 other:
   concurrent-build-plugin: system-default
----
-version: 2
-plan:
-  key: MARS-DBEAT1
-plan-permissions:
-- users:
-  - marco
-  permissions:
